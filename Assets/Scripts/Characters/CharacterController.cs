@@ -5,19 +5,24 @@ namespace Avocado
 {
     public class CharacterController : MonoBehaviour
     {
+        [SerializeField] private float staminaMax = 10;
+        private float stamina = 10;
+        public float StaminaLevel { get { return stamina / staminaMax; } }
         [SerializeField] private Collider footCollider;
-        public bool airborne = false;
-        [SerializeField] private float waterLevelMax;
-        [SerializeField] private float waterLevel = 0;
-        public float WaterLevel { get { return waterLevel / waterLevelMax; } }
-        public float AddWater { set { waterLevel += value; } }
-        [SerializeField] private float moveSpeed = 4f;
+        [SerializeField] private float waterAmountMax;
+        [SerializeField] private float waterAmount = 0;
+        public float WaterLevel { get { return waterAmount / waterAmountMax; } }
+        public float AddWater { set { waterAmount += value; } }
+        [SerializeField] private float moveSpeedMax = 4f;
+        private float moveSpeed;
         Vector2 movementVector = Vector2.zero;
         Rigidbody rb;
         private Vector3 forward;
         private Vector3 right;
         private void Start()
         {
+            moveSpeed = moveSpeedMax / 2;
+            availableArt = new LinkedList<JokerArt>();
             rb = GetComponent<Rigidbody>();
             forward = Camera.main.transform.forward; // Set forward to equal the camera's forward vector
             forward.y = 0; // make sure y is 0
@@ -26,6 +31,26 @@ namespace Avocado
         }
         void Update()
         {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                if (stamina > 0)
+                {
+                    moveSpeed = moveSpeedMax;
+                    stamina -= Time.deltaTime;
+                }
+                else
+                {
+                    moveSpeed = moveSpeedMax / 2;
+                    stamina += Time.deltaTime;
+                }
+            }
+            else
+            {
+                moveSpeed = moveSpeedMax / 2;
+                stamina += Time.deltaTime;
+            }
+            if (stamina > staminaMax)
+                stamina = staminaMax;
             // Debug.DrawRay(transform.position, -Vector3.up * (distToGround + .1f), Color.red, 1f);
             IsGrounded();
             if (Input.anyKey)
@@ -34,6 +59,8 @@ namespace Avocado
             }
             if (Input.GetKeyDown("space") && IsGrounded())
                 Jump();
+            if (Input.GetKeyDown("c") && IsGrounded())
+                Clean();
         }
         void Move()
         {
@@ -57,14 +84,61 @@ namespace Avocado
             return Physics.Raycast(footCollider.transform.position, -Vector3.up, distToGround + 0.1f, layerMask);
         }
 
+        private LinkedList<JokerArt> availableArt;
         private void OnTriggerEnter(Collider collider)
         {
             if (collider.tag == "WaterPickup")
             {
-                AddWater = collider.GetComponent<Waterdroplet>().Value;
-                Destroy(collider.gameObject);
+                Waterdroplet droplet = collider.GetComponent<Waterdroplet>();
+                AddWater = droplet.Value;
+                droplet.Value = -droplet.Value;
+            }
+            if (collider.tag == "JokerArt")
+            {
+                if (!availableArt.Contains(collider.GetComponent<JokerArt>()))
+                {
+                    availableArt.AddLast(collider.GetComponent<JokerArt>());
+                }
             }
         }
-
+        private void OnTriggerExit(Collider collider)
+        {
+            if (collider.tag == "JokerArt")
+            {
+                availableArt.Remove(collider.GetComponent<JokerArt>());
+            }
+        }
+        private void Clean()
+        {
+            JokerArt art = GetClosestArt();
+            if (art != null)
+            {
+                if (WaterLevelCk(art.Value))
+                {
+                    AddWater = -art.Value;
+                    availableArt.Remove(art);
+                    art.Value = -art.Value;
+                }
+            }
+        }
+        private bool WaterLevelCk(float value)
+        {
+            return (waterAmount - value) >= 0 ? true : false;
+        }
+        private JokerArt GetClosestArt()
+        {
+            float dist = Mathf.Infinity;
+            JokerArt closestArt = null;
+            foreach (JokerArt art in availableArt)
+            {
+                float tempDist = Vector3.Distance(transform.position, art.transform.position);
+                if (tempDist < dist)
+                {
+                    dist = tempDist;
+                    closestArt = art;
+                }
+            }
+            return closestArt;
+        }
     }
 }

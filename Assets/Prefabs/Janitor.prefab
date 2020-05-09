@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b907a068cf9334e8eda40b528862b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  staminaMax: 10
   footCollider: {fileID: 7726738584504298282}
-  airborne: 0
-  waterLevelMax: 100
-  moveSpeed: 4
+  waterAmountMax: 100
+  waterAmount: 0
+  moveSpeedMax: 16
   jumpForce: 250
   grounded: 0
   distToGround: 1
