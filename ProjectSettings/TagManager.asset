@@ -7,6 +7,7 @@ TagManager:
   - Avocado
   - WaterPickup
   - JokerArt
+  - Boat
   layers:
   - Default
   - TransparentFX

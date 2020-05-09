@@ -5,25 +5,40 @@ namespace Avocado
 {
     public class CharacterController : MonoBehaviour
     {
+        bool active = false;
+        public bool SetActivestate { set { active = value; } }
+        [Header("Health")]
         [SerializeField] private float healthMax = 100;
-        private float health = 10;
+        [SerializeField] private float health;
         public float HealthLevel { get { return health / healthMax; } }
+        [Header("Stamina")]
         [SerializeField] private float staminaMax = 10;
-        private float stamina = 10;
+        [SerializeField] private float stamina = 10;
         public float StaminaLevel { get { return stamina / staminaMax; } }
-        [SerializeField] private Collider footCollider;
+        [Header("Water")]
         [SerializeField] private float waterAmountMax;
         [SerializeField] private float waterAmount = 0;
         public float WaterLevel { get { return waterAmount / waterAmountMax; } }
         public float AddWater { set { waterAmount += value; } }
-        [SerializeField] private float moveSpeedMax = 4f;
-        private float moveSpeed;
-        Vector2 movementVector = Vector2.zero;
-        Rigidbody rb;
-        private Vector3 forward;
-        private Vector3 right;
+        [Header("Movement")]
+        [SerializeField] private Collider footCollider;
+        [SerializeField] private float moveSpeedMax = 16f;
+        [SerializeField] private float moveSpeed;
+        [SerializeField] Vector2 movementVector = Vector2.zero;
+        [SerializeField] private Vector3 forward;
+        [SerializeField] private Vector3 right;
+        [SerializeField] private float jumpForce = 250f;
+        [SerializeField] private bool grounded;
+        float distToGround = 1;
+        int layerMask = 1 << 8;
+        private Rigidbody rb;
+        private LinkedList<JokerArt> availableArt;
+        private Boat availableBoat;
         private void Start()
         {
+            if (GameObject.FindGameObjectWithTag("Player") == this.gameObject)
+                SetActivestate = true;
+            health = healthMax;
             moveSpeed = moveSpeedMax / 2;
             availableArt = new LinkedList<JokerArt>();
             rb = GetComponent<Rigidbody>();
@@ -32,9 +47,11 @@ namespace Avocado
             forward = Vector3.Normalize(forward); // make sure the length of vector is set to a max of 1.0
             right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward; // set the right-facing vector to be facing right relative to the camera's forward vector
         }
-        void Update()
+        public virtual void Update()
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (!active)
+                return;
+            if (Input.GetKey(KeyCode.LeftShift) && IsGrounded())
             {
                 if (stamina > 0)
                 {
@@ -62,8 +79,19 @@ namespace Avocado
             }
             if (Input.GetKeyDown("space") && IsGrounded())
                 Jump();
-            if (Input.GetKeyDown("c") && IsGrounded())
-                Clean();
+            if (Input.GetKeyDown("e") && IsGrounded())
+            {
+                if (availableArt.Count > 0)
+                {
+                    Clean();
+                    return;
+                }
+                if (availableBoat != null)
+                {
+                    availableBoat.Use(this.transform);
+                }
+            }
+
         }
         void Move()
         {
@@ -74,20 +102,14 @@ namespace Avocado
             transform.position += rightMovement; // move our transform's position right/left
             transform.position += upMovement; // Move our transform's position up/down
         }
-        [SerializeField] private float jumpForce = 250f;
         void Jump()
         {
             rb.AddForce(new Vector3(0, jumpForce, 0));
         }
-        public bool grounded;
-        [SerializeField] float distToGround;
-        int layerMask = 1 << 8;
         bool IsGrounded()
         {
             return Physics.Raycast(footCollider.transform.position, -Vector3.up, distToGround + 0.1f, layerMask);
         }
-
-        private LinkedList<JokerArt> availableArt;
         private void OnTriggerEnter(Collider collider)
         {
             if (collider.tag == "WaterPickup")
@@ -102,6 +124,10 @@ namespace Avocado
                 {
                     availableArt.AddLast(collider.GetComponent<JokerArt>());
                 }
+            }
+            if (collider.tag == "Boat")
+            {
+                availableBoat = collider.GetComponent<Boat>();
             }
         }
         private void OnTriggerExit(Collider collider)
