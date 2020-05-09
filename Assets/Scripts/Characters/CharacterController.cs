@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    Vector2 movementVector;
+    Vector2 movementVector = Vector2.zero;
     void Update()
     {
         if (Input.GetAxis("Horizontal") != 0)
         {
-            var a = Input.GetAxis("Horizontal");
-            Debug.Log(a);
+            movementVector = new Vector2(Input.GetAxis("Horizontal"), movementVector.y);
         }
         if (Input.GetAxis("Vertical") != 0)
         {
-            var b = Input.GetAxis("Vertical");
-            Debug.Log(b);
+            movementVector = new Vector2(movementVector.x, Input.GetAxis("Vertical"));
         }
+        Debug.Log(movementVector);
     }
 }
