@@ -51,6 +51,9 @@ namespace Avocado
                 case ScriptEventType.VANDALIZE:
                     if (type == ScriptEventType.PICKUP_BROOM) {
                         character.PickupBroom();
+                        jester.movementSpeed = 0;
+                        //TODO: Set jester to next encounter position
+                        jester.transform.position = Vector3.zero;
                         character.SetActivestate = true;
                         character.movementSpeed = 0;
                         Destroy(this);
