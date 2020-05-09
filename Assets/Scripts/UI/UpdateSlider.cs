@@ -26,6 +26,9 @@ namespace Avocado
                 case 1:
                     slider.value = player.StaminaLevel;
                     break;
+                case 2:
+                    slider.value = player.HealthLevel;
+                    break;
             }
         }
     }

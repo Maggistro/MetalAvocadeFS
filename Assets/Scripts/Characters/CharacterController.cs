@@ -5,6 +5,9 @@ namespace Avocado
 {
     public class CharacterController : MonoBehaviour
     {
+        [SerializeField] private float healthMax = 100;
+        private float health = 10;
+        public float HealthLevel { get { return health / healthMax; } }
         [SerializeField] private float staminaMax = 10;
         private float stamina = 10;
         public float StaminaLevel { get { return stamina / staminaMax; } }
@@ -41,13 +44,13 @@ namespace Avocado
                 else
                 {
                     moveSpeed = moveSpeedMax / 2;
-                    stamina += Time.deltaTime;
+                    stamina += Time.deltaTime / 2;
                 }
             }
             else
             {
                 moveSpeed = moveSpeedMax / 2;
-                stamina += Time.deltaTime;
+                stamina += Time.deltaTime / 2;
             }
             if (stamina > staminaMax)
                 stamina = staminaMax;
