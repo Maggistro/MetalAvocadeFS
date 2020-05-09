@@ -5,7 +5,6 @@ namespace Avocado
 {
     class PlayerLeaveHutEvent : ScriptEvent
     {
-        protected override bool disableOnStart { get; set; } = false;
         protected override ScriptEventType lastEvent { get; set; } = ScriptEventType.LEAVE_HUT;
         private bool isActive = false;
         private float storedMovementSpeed;
