@@ -10,8 +10,8 @@ namespace Avocado
     {
         protected string npcName;
         [SerializeField]
-        protected float movementSpeed;
-        protected Vector3 movementDirection = Vector3.right;
+        public float movementSpeed;
+        public Vector3 movementDirection = Vector3.right;
         protected System.Random rng;
         [SerializeField]
         protected float npcDecisionTimer = 3f;
@@ -25,7 +25,7 @@ namespace Avocado
             navCollider = GetComponent<SphereCollider>();
         }
 
-        private void Update()
+        protected void Update()
         {
             if ((Time.timeSinceLevelLoad % npcDecisionTimer) <= 0.001f)
             {
@@ -42,7 +42,7 @@ namespace Avocado
         protected void Move()
         {
             transform.forward = movementDirection;
-            transform.position = Vector3.Lerp(transform.position, 
+            transform.position = Vector3.Lerp(transform.position,
                 transform.position + transform.forward * movementSpeed, Time.deltaTime);
         }
 
