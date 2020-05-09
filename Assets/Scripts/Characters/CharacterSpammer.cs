@@ -52,7 +52,6 @@ namespace Avocado
                 Ray groundRay = new Ray(new Vector3(0f, 50f, 0f), new Vector3(0f, -1f, 0f) * 200f);
                 
                 RaycastHit[] hits = Physics.RaycastAll(groundRay, 200f, ~0);
-                Debug.Log(hits.Length);
                 if (hits.Length > 0)
                 {
                     foreach(RaycastHit hit in hits)
