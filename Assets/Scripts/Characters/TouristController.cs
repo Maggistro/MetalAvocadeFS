@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class TouristController : NpcController
 {
-    // Start is called before the first frame update
-    void Start()
+    private new void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Awake();
+        npcName = "Tourist";
     }
 }
