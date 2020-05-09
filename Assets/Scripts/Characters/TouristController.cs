@@ -2,11 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TouristController : NpcController
+namespace Avocado
 {
-    private new void Awake()
+    public class TouristController : NpcController
     {
-        base.Awake();
-        npcName = "Tourist";
+        private new void Awake()
+        {
+            base.Awake();
+            npcName = "Tourist";
+            movementDirection = new Vector3(0f, 0f, 1f);
+        }
+
+        protected override void TriggerEntered()
+        {
+            if (navCollider != null)
+            {
+                movementDirection = -movementDirection;
+            }
+        }
     }
 }

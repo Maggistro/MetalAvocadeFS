@@ -2,11 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BabyController : NpcController
+namespace Avocado
 {
-    private new void Awake()
+    public class BabyController : NpcController
     {
-        base.Awake();
-        npcName = "Spreitz-Baby";
+        private new void Awake()
+        {
+            base.Awake();
+            npcName = "Spreitz-Baby";
+        }
+
+        protected override void EvaluateMovement()
+        {
+            if (navCollider != null)
+            {
+                float x = rng.Next(Mathf.FloorToInt(-navCollider.radius), Mathf.FloorToInt(navCollider.radius));
+                float z = rng.Next(Mathf.FloorToInt(-navCollider.radius), Mathf.FloorToInt(navCollider.radius));
+
+                movementDirection = new Vector3(x, 0, z);
+            }
+        }
     }
 }

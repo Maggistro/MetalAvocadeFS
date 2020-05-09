@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
+  npcDecisionTimer: 1
 --- !u!1001 &534887593631241602
 PrefabInstance:
   m_ObjectHideFlags: 0

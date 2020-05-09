@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JesterController : NpcController
+namespace Avocado
 {
-    private new void Awake()
+    public class JesterController : NpcController
     {
-        base.Awake();
-        npcName = "Narr";
+        private new void Awake()
+        {
+            base.Awake();
+            npcName = "Narr";
+        }
     }
 }
