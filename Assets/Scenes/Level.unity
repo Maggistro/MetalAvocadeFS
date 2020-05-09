@@ -1565,7 +1565,7 @@ PrefabInstance:
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
       propertyPath: near clip plane
-      value: -5000
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
@@ -1575,7 +1575,7 @@ PrefabInstance:
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
       propertyPath: far clip plane
-      value: 5000.01
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
