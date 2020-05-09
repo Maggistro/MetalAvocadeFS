@@ -38,6 +38,7 @@ namespace Avocado
         protected virtual void EvaluateMovement()
         { }
 
+        // Move NPC in movementDirection.
         protected void Move()
         {
             transform.forward = movementDirection;
@@ -45,6 +46,7 @@ namespace Avocado
                 transform.position + transform.forward * movementSpeed, Time.deltaTime);
         }
 
+        // Called once something enters the SphereCollider on the Npc. 
         private void OnTriggerEnter(Collider other)
         {
             if (navCollider != null && other.gameObject.layer != LayerMask.NameToLayer("ground"))
@@ -55,6 +57,13 @@ namespace Avocado
 
         protected virtual void TriggerEntered()
         { }
+
+        // Randomize the amount of time until the npc takes action.
+        protected virtual void RandomizeDecisionTimer()
+        {
+            double newTimer = rng.NextDouble();
+            npcDecisionTimer = Mathf.Clamp((float)newTimer, 0f, 6f);
+        }
 
         private void OnDrawGizmos()
         {

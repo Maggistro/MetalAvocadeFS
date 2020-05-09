@@ -11,10 +11,12 @@ namespace Avocado
             base.Awake();
             npcName = "Tourist";
             movementDirection = new Vector3(0f, 0f, 1f);
+            RandomizeDecisionTimer();
         }
 
         protected override void TriggerEntered()
         {
+            base.TriggerEntered();
             if (navCollider != null)
             {
                 movementDirection = -movementDirection;
