@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b907a068cf9334e8eda40b528862b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterLevelMax: 100
+  moveSpeed: 4
 --- !u!54 &90542846
 Rigidbody:
   m_ObjectHideFlags: 0
