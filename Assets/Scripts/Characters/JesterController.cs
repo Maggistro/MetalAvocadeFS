@@ -11,5 +11,15 @@ namespace Avocado
             base.Awake();
             npcName = "Narr";
         }
+
+        public void PickupAvocado()
+        {
+            Debug.Log("picking up avocado");
+        }
+
+        public void Vandalize()
+        {
+            Debug.Log("Vandalizing stuff");
+        }
     }
 }
