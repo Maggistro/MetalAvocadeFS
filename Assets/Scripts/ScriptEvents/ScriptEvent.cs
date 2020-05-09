@@ -31,7 +31,7 @@ namespace Avocado
         {
             jester = FindObjectOfType<JesterController>();
             character = FindObjectOfType<CharacterController>();
-            character.isDisabled = disableOnStart;
+            character.SetActivestate = disableOnStart;
         }
 
         void Update()

@@ -18,7 +18,7 @@ namespace Avocado
         void OnTriggerEnter(Collider other)
         {
             if (other.GetComponentInParent<CharacterController>() != null) {
-                other.GetComponentInParent<CharacterController>().isDisabled = true;
+                character.SetActivestate = false;
                 targets.First().target.position = character.transform.position;
                 isActive = true;
             }
@@ -52,7 +52,7 @@ namespace Avocado
                 case ScriptEventType.VANDALIZE:
                     if (type == ScriptEventType.PICKUP_BROOM) {
                         character.PickupBroom();
-                        character.isDisabled = false;
+                        character.SetActivestate = true;
                         character.movementSpeed = 0;
                         Destroy(this);
                         return;

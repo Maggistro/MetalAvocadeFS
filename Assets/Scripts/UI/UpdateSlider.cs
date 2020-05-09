@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Avocado
 {
-    public class UpdateWaterDisplay : MonoBehaviour
+    public class UpdateSlider : MonoBehaviour
     {
         [SerializeField] private CharacterController player;
         [SerializeField] private Slider slider;
@@ -15,9 +15,21 @@ namespace Avocado
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
             slider = GetComponent<Slider>();
         }
+        public int switchCase;
         void Update()
         {
-            slider.value = player.WaterLevel;
+            switch (switchCase)
+            {
+                case 0:
+                    slider.value = player.WaterLevel;
+                    break;
+                case 1:
+                    slider.value = player.StaminaLevel;
+                    break;
+                case 2:
+                    slider.value = player.HealthLevel;
+                    break;
+            }
         }
     }
 }

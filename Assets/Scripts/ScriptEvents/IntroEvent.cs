@@ -40,7 +40,7 @@ namespace Avocado
                     break;
                 case ScriptEventType.STEAL_AVOCADO:
                     if (type == ScriptEventType.LEAVE_HUT) { // got out with avocado, player can now move
-                        this.character.isDisabled = false;
+                        this.character.SetActivestate = true;
                         return;
                     }
                     Debug.Log("Unsupported script event after steal avocado");
