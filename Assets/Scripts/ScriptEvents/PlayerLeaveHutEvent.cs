@@ -16,7 +16,7 @@ namespace Avocado
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponentInParent<CharacterController>() != null) {
+            if (other.GetComponentInParent<CharacterController>() != null && other.GetComponent<Boat>() == null) {
                 character.SetActivestate = false;
                 targets.First().target.position = character.transform.position;
                 isActive = true;
