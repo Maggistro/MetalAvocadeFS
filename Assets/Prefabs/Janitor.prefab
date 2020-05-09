@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1013424941982535854}
   - component: {fileID: 8229086559297816197}
+  - component: {fileID: 90542846}
+  - component: {fileID: 90542845}
   m_Layer: 0
   m_Name: Janitor
   m_TagString: Player
@@ -45,6 +47,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b907a068cf9334e8eda40b528862b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &90542846
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013424941982535849}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!135 &90542845
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013424941982535849}
+  m_Material: {fileID: 13400000, guid: 8300c49c6a03ad6428d69c8b61df42b4, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1 &1013424943449160863
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +87,6 @@ GameObject:
   - component: {fileID: 1013424943449160860}
   - component: {fileID: 1013424943449160835}
   - component: {fileID: 1013424943449160834}
-  - component: {fileID: 1013424943449160861}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -125,20 +155,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1013424943449160861
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013424943449160863}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1013424943838354106
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +166,6 @@ GameObject:
   - component: {fileID: 1013424943838354107}
   - component: {fileID: 1013424943838354110}
   - component: {fileID: 1013424943838354105}
-  - component: {fileID: 1013424943838354104}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -219,16 +234,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &1013424943838354104
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013424943838354106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
