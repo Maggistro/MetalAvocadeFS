@@ -19,7 +19,7 @@ namespace Avocado
         private Transform sceneParent;
         
 
-        void Start()
+        public void SpawnCharacters()
         {
             rng = new System.Random();
 
