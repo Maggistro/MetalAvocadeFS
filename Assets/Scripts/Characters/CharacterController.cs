@@ -5,7 +5,7 @@ namespace Avocado
 {
     public class CharacterController : NpcController
     {
-        bool active = false;
+        public bool active = false;
         public bool SetActivestate { set { active = value; } }
         [Header("Health")]
         [SerializeField] private float healthMax = 100;
@@ -29,15 +29,17 @@ namespace Avocado
         [SerializeField] private Vector3 right;
         [SerializeField] private float jumpForce = 250f;
         [SerializeField] private bool grounded;
-        float distToGround = 1;
-        int layerMask = 1 << 8;
+        public float distToGround = 1;
+        private int layerMask = 1 << 8;//ground
         private Rigidbody rb;
         private LinkedList<JokerArt> availableArt;
         private Boat availableBoat;
-        private void Start()
+        public virtual void Start()
         {
             if (GameObject.FindGameObjectWithTag("Player") == this.gameObject)
+            {
                 SetActivestate = true;
+            }
             health = healthMax;
             moveSpeed = moveSpeedMax / 2;
             availableArt = new LinkedList<JokerArt>();
@@ -73,10 +75,13 @@ namespace Avocado
             if (stamina > staminaMax)
                 stamina = staminaMax;
             // Debug.DrawRay(transform.position, -Vector3.up * (distToGround + .1f), Color.red, 1f);
-            IsGrounded();
+            if (Input.anyKey)
+            {
+                Move();
+            }
             if (Input.GetKeyDown("space") && IsGrounded())
                 Jump();
-            if (Input.GetKeyDown("e") && IsGrounded())
+            if (Input.GetKeyDown(KeyCode.E) && IsGrounded())
             {
                 if (availableArt.Count > 0)
                 {
@@ -90,8 +95,7 @@ namespace Avocado
             }
 
         }
-
-        new void Move()
+        public new virtual void Move()
         {
             Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("Horizontal"); // Our right movement is based on the right vector, movement speed, and our GetAxis command. We multiply by Time.deltaTime to make the movement smooth.
             Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("Vertical"); // Up movement uses the forward vector, movement speed, and the vertical axis inputs.
@@ -106,7 +110,7 @@ namespace Avocado
         {
             rb.AddForce(new Vector3(0, jumpForce, 0));
         }
-        bool IsGrounded()
+        public bool IsGrounded()
         {
             return Physics.Raycast(footCollider.transform.position, -Vector3.up, distToGround + 0.1f, layerMask);
         }
