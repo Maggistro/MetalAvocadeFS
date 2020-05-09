@@ -1040,6 +1040,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2383943150663431396, guid: 8cbba03e1327de94b8a55c08de8de374,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2845410909884523253, guid: 8cbba03e1327de94b8a55c08de8de374,
         type: 3}
       propertyPath: movementSpeed
@@ -1565,7 +1570,7 @@ PrefabInstance:
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
       propertyPath: near clip plane
-      value: -5000
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
@@ -1575,7 +1580,7 @@ PrefabInstance:
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
       propertyPath: far clip plane
-      value: 5000.01
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
@@ -1730,6 +1735,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2065733615}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1701091851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1701091853}
+  - component: {fileID: 1701091852}
+  m_Layer: 0
+  m_Name: NpcSpammer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1701091852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701091851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e75dd6802d53743b7cdc1062c5ec84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  babyTemplate: {fileID: 3883760947419749645, guid: cffa75d0aa065db4dac62783dcab070c,
+    type: 3}
+  numberOfBabies: 12
+  touristTemplate: {fileID: 5755326180551461786, guid: fdf88bcb3acb79140a03def9e0de31a9,
+    type: 3}
+  numberOfTourists: 15
+--- !u!4 &1701091853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701091851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1754424303 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4930591124843069759, guid: 5634dc672ff417643a7a4de05a2debd2,

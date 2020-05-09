@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0
+  movementDirection: {x: 1, y: 0, z: 0}
   npcDecisionTimer: 2
 --- !u!135 &3201506868256040726
 SphereCollider:

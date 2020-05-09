@@ -11,13 +11,13 @@ namespace Avocado
         private int numberOfBabies;
         public GameObject touristTemplate;
         [SerializeField]
-        private int numberOfTourits;
+        private int numberOfTourists;
         private BoxCollider groundCollider;
         private LayerMask groundMask;
         private Bounds groundBounds;
         private System.Random rng;
         private Transform sceneParent;
-
+        
 
         void Start()
         {
@@ -25,16 +25,23 @@ namespace Avocado
 
             GameObject npcParentGO = new GameObject("NpcCharacters");
             sceneParent = npcParentGO.transform;
-            sceneParent.position = new Vector3(0f, 0f, 0f);
+            sceneParent.position = new Vector3(0f, 1f, 0f);
             sceneParent.rotation = Quaternion.identity;
             sceneParent.localScale = new Vector3(1f, 1f, 1f);
 
             groundMask = LayerMask.NameToLayer("ground");
             groundCollider = GetGroundCollider();
-            groundBounds = groundCollider.bounds;
+            if (groundCollider != null)
+            {
+                groundBounds = groundCollider.bounds;
+            }
+            else
+            {
+                Debug.LogError("GROUND WAS NOT FOUND");
+            }
 
-            SpawnNpcsFromTemplate(babyTemplate);
-            SpawnNpcsFromTemplate(touristTemplate);
+            SpawnNpcsFromTemplate(babyTemplate, numberOfBabies);
+            SpawnNpcsFromTemplate(touristTemplate, numberOfTourists);
         }
         
         private BoxCollider GetGroundCollider()
@@ -42,29 +49,35 @@ namespace Avocado
             BoxCollider result = new BoxCollider();
             if (Camera.main != null)
             {
-                Ray groundRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward * Camera.main.farClipPlane);
-                RaycastHit raycastHit;
-                if (Physics.Raycast(groundRay, out raycastHit, 200f))
+                Ray groundRay = new Ray(new Vector3(0f, 50f, 0f), new Vector3(0f, -1f, 0f) * 200f);
+                
+                RaycastHit[] hits = Physics.RaycastAll(groundRay, 200f, ~0);
+                Debug.Log(hits.Length);
+                if (hits.Length > 0)
                 {
-                    if (raycastHit.collider.gameObject.layer == groundMask)
+                    foreach(RaycastHit hit in hits)
                     {
-                        result = (BoxCollider)raycastHit.collider;
+                        if (hit.collider.gameObject.layer == groundMask)
+                        {
+                            result = (BoxCollider)hit.collider;
+                        }
                     }
                 }
             }
             return result;
         }
 
-        private void SpawnNpcsFromTemplate(GameObject template)
+        private void SpawnNpcsFromTemplate(GameObject template, int amount)
         {
             if (template != null)
             {
-                for (int i = 0; i < numberOfBabies; i++)
+                for (int i = 0; i < amount; i++)
                 {
                     GameObject npc = Instantiate(template, 
                         GetRandomPositionOnGround(), Quaternion.identity) as GameObject;
                     npc.transform.parent = sceneParent;
                     SetRBValuesToZero(npc);
+                    CheckPosition(npc.transform);
                 }
             }
         }
@@ -72,10 +85,20 @@ namespace Avocado
         private Vector3 GetRandomPositionOnGround()
         {
             Vector3 position = Vector3.zero;
-            float x = ((float)rng.NextDouble() * groundBounds.min.x * 2) - groundBounds.min.x;
-            float y = groundCollider.transform.position.y + groundCollider.size.y;
-            float z = ((float)rng.NextDouble() * groundBounds.min.z* 2) - groundBounds.min.z;
-            return new Vector3(x, y, z);
+            if (groundBounds != null && groundCollider != null)
+            {
+                float offsetX = groundBounds.extents.x * 0.75f;
+                float offsetZ = groundBounds.extents.z * 0.75f;
+                float x = ((float)rng.NextDouble() * offsetX * 2) - offsetX;
+                float y = groundCollider.transform.position.y + groundCollider.size.y;
+                float z = ((float)rng.NextDouble() * offsetZ * 2) - offsetZ;
+                return new Vector3(x + groundCollider.transform.position.x, y, 
+                    z + groundCollider.transform.position.z);
+            }
+            else
+            {
+                return position;
+            }
         }
 
         private void SetRBValuesToZero(GameObject go)
@@ -85,6 +108,34 @@ namespace Avocado
             {
                 rb.velocity = new Vector3(0f, 0f, 0f);
                 rb.angularVelocity = new Vector3(0f, 0f, 0f);
+            }
+        }
+
+        // Use a Raycast to check if the transform has been positioned in another rigidbody.
+        private void CheckPosition(Transform transformToCheck)
+        {
+            Rigidbody rb = transformToCheck.GetComponent<Rigidbody>();
+            float testDistance = 2f;
+            RaycastHit raycastHit;
+
+            if (rb != null)
+            {
+                if (rb.SweepTest(transformToCheck.forward, out raycastHit, testDistance))
+                {
+                    transformToCheck.position += new Vector3(0f, 0f, -1f);
+                }
+                if (rb.SweepTest(- transformToCheck.forward, out raycastHit, testDistance))
+                {
+                    transformToCheck.position += new Vector3(0f, 0f, 1f);
+                }
+                if (rb.SweepTest(transformToCheck.right, out raycastHit, testDistance))
+                {
+                    transformToCheck.position += new Vector3(-1f, 0f, 0f);
+                }
+                if (rb.SweepTest(- transformToCheck.right, out raycastHit, testDistance))
+                {
+                    transformToCheck.position += new Vector3(1f, 0f, 0f);
+                }
             }
         }
     }
