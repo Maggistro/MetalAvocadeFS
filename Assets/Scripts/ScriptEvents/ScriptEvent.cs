@@ -19,7 +19,6 @@ namespace Avocado
 
         public List<Step> targets;
 
-        protected abstract bool disableOnStart { get; set; }
         protected abstract ScriptEventType lastEvent  { get; set; }
 
         protected JesterController jester;
@@ -31,7 +30,6 @@ namespace Avocado
         {
             jester = FindObjectOfType<JesterController>();
             character = FindObjectOfType<CharacterController>();
-            character.SetActivestate = disableOnStart;
         }
 
         void Update()

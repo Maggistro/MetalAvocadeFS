@@ -5,13 +5,13 @@ namespace Avocado
 {
     class IntroEvent : ScriptEvent
     {
-        protected override bool disableOnStart {get; set;} = true;
         protected override ScriptEventType lastEvent {get; set;} = ScriptEventType.INTRO;
 
         private float storedMovementSpeed;
 
         void Start()
         {
+            character.SetActivestate = false;
             storedMovementSpeed = jester.movementSpeed;
         }
 
