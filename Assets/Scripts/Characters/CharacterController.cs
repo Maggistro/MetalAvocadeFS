@@ -5,7 +5,7 @@ namespace Avocado
 {
     public class CharacterController : NpcController
     {
-        public bool active = true;
+        protected bool active = true;
         public bool SetActivestate { set { active = value; } }
         [Header("Health")]
         [SerializeField] private float healthMax = 100;

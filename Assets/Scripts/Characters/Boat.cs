@@ -13,6 +13,7 @@ namespace Avocado
         public override void Start()
         {
             base.Start();
+            SetActivestate = false;
             distToGround *= 10;
         }
 
