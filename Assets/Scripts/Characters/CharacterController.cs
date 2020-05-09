@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    Vector2 movementVector;
     void Update()
     {
-        
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            var a = Input.GetAxis("Horizontal");
+            Debug.Log(a);
+        }
+        if (Input.GetAxis("Vertical") != 0)
+        {
+            var b = Input.GetAxis("Vertical");
+            Debug.Log(b);
+        }
     }
 }
