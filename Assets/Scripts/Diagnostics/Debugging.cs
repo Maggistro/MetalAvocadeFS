@@ -1,22 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Debugging : MonoBehaviour
+namespace Avocado
 {
-    public bool debug;
-
-    void Update()
+    public class Debugging : MonoBehaviour
     {
-        if (debug)
+        public bool debug;
+
+        void Update()
         {
-            if (Input.GetKeyDown("o"))
+            if (debug)
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().AddWater = 1;
-            }
-            if (Input.GetKeyDown("l"))
-            {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().AddWater = -1;
+                if (Input.GetKeyDown("o"))
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().AddWater = 1;
+                }
+                if (Input.GetKeyDown("l"))
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().AddWater = -1;
+                }
             }
         }
     }
