@@ -1877,6 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8afb4de7009ab4fb6fa1d001d16083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
   healthMax: 100
   health: 0
   staminaMax: 10
@@ -1891,6 +1892,7 @@ MonoBehaviour:
   right: {x: 0, y: 0, z: 0}
   jumpForce: 250
   grounded: 0
+  distToGround: 1
 --- !u!65 &1763435847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1900,7 +1902,7 @@ BoxCollider:
   m_GameObject: {fileID: 1763435844}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2552,6 +2554,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Waterarea
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058522787814284980, guid: 8124367ec50ca81448912aaa1ee54563,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7058522787814284981, guid: 8124367ec50ca81448912aaa1ee54563,
         type: 3}
