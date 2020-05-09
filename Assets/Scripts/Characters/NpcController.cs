@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.EventSystems;
 
 public class NpcController : MonoBehaviour
 {
@@ -12,14 +13,17 @@ public class NpcController : MonoBehaviour
     protected Vector3 movementDirection = Vector3.forward;
     protected System.Random rng;
     [SerializeField]
-    protected float npcDecisionTimer = 1f;
+    protected float npcDecisionTimer = 5f;
 
     protected float maxNavSearchDistance = 5f;
 
+    protected SphereCollider navCollider;
+
     protected void Awake()
     {
-        //TODO setup
         rng = new System.Random();
+
+        navCollider = GetComponent<SphereCollider>();
     }
 
     private void Update()
@@ -31,6 +35,7 @@ public class NpcController : MonoBehaviour
 
         Move();
     }
+
 
     protected virtual void EvaluateMovement()
     {
@@ -46,6 +51,15 @@ public class NpcController : MonoBehaviour
         transform.forward = movementDirection;
         transform.position = Vector3.Lerp(transform.position, 
             transform.position + transform.forward * movementSpeed, Time.deltaTime);
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (navCollider != null && !other.isTrigger)
+        {
+            EvaluateMovement();
+        }
     }
 
 
