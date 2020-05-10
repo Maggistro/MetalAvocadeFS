@@ -6,6 +6,12 @@ namespace Avocado
 {
     public class JesterController : NpcController
     {
+        [Header("Sound")]
+        [SerializeField] AudioSource audioSource; 
+        public AudioSource GetAudioSource { get { return audioSource; } } 
+        [SerializeField] AudioClip[] audioPaintbrush;  
+        [SerializeField] public AudioClip audioIntroCrash;
+        [SerializeField] public AudioClip audioAvocadoCry;
         public GameObject graffiti;
         private GameObject avocado;
         private Renderer[] renderers;
@@ -62,6 +68,8 @@ namespace Avocado
             Vector3 position = transform.position;
             position.y = 0.1f;
             Instantiate(graffiti, position, new Quaternion());
+            audioSource.clip = audioPaintbrush[Random.Range(0,audioPaintbrush.Length)];
+            audioSource.Play();
 
         }
 

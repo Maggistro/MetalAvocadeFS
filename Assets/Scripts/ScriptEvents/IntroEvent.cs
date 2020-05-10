@@ -33,7 +33,12 @@ namespace Avocado
                 case ScriptEventType.INTRO:
                     if (type == ScriptEventType.STEAL_AVOCADO) { // just entered, gonna steal that avocado
                         jester.movementSpeed = 0;
+                        character.GetAudioSource.loop = false;
+                        character.GetAudioSource.Stop();
+                        
                         this.jester.PickupAvocado();
+                        jester.GetAudioSource.clip = jester.audioAvocadoCry;
+                        jester.GetAudioSource.Play();
                         return;
                     }
                     Debug.Log("Unsupported script event after intro");
@@ -41,6 +46,8 @@ namespace Avocado
                 case ScriptEventType.STEAL_AVOCADO:
                     if (type == ScriptEventType.LEAVE_HUT) { // got out with avocado, player can now move
                         this.character.SetActivestate = true;
+                        jester.GetAudioSource.clip = jester.audioIntroCrash;
+                        jester.GetAudioSource.Play();
                         return;
                     }
                     Debug.Log("Unsupported script event after steal avocado");

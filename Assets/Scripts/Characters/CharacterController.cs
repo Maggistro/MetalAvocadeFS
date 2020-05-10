@@ -32,6 +32,7 @@ namespace Avocado
         [SerializeField] private bool grounded;
         [Header("Sound")]
         [SerializeField] AudioSource audioSource;
+        public AudioSource GetAudioSource { get { return audioSource; } } 
         [SerializeField] AudioClip audioWipeFloor;
         [SerializeField] AudioClip audioWaterRefill;
 

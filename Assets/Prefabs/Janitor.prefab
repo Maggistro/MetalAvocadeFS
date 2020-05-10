@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8229086559297816197}
   - component: {fileID: 90542846}
   - component: {fileID: 3668050748182815043}
+  - component: {fileID: -2145400197488937802}
   m_Layer: 0
   m_Name: Janitor
   m_TagString: Player
@@ -69,7 +70,7 @@ MonoBehaviour:
   grounded: 0
   audioSource: {fileID: 3668050748182815043}
   audioWipeFloor: {fileID: 8300000, guid: f06e878f896306a4588890491cb5f3ba, type: 3}
-  audioWaterRefill: {fileID: 8300000, guid: 23f11bbd724a2a5448a5d13dd6528420, type: 3}
+  audioWaterRefill: {fileID: 8300000, guid: b2dddbca386d3ea4bbf6ced28b3ea25f, type: 3}
   distToGround: 1
 --- !u!54 &90542846
 Rigidbody:
@@ -183,6 +184,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &-2145400197488937802
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013424941982535849}
+  m_Enabled: 1
 --- !u!1 &3582738966927461950
 GameObject:
   m_ObjectHideFlags: 0
