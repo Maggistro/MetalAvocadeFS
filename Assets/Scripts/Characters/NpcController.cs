@@ -9,6 +9,7 @@ namespace Avocado
     public class NpcController : MonoBehaviour
     {
         protected string npcName;
+        [Header("NPC Controller")]
         [SerializeField]
         public float movementSpeed;
         public Vector3 movementDirection = Vector3.right;
@@ -46,7 +47,7 @@ namespace Avocado
                 transform.position + transform.forward * movementSpeed, Time.deltaTime);
         }
 
-        // Called once something enters the SphereCollider on the Npc. 
+        // Called once something enters the SphereCollider on the Npc.
         private void OnTriggerEnter(Collider other)
         {
             if (navCollider != null && other.gameObject.layer != LayerMask.NameToLayer("ground"))

@@ -5,7 +5,7 @@ namespace Avocado
 {
     public class CharacterController : NpcController
     {
-        public bool active = false;
+        protected bool active = true;
         public bool SetActivestate { set { active = value; } }
         [Header("Health")]
         [SerializeField] private float healthMax = 100;
@@ -37,10 +37,6 @@ namespace Avocado
         private Boat availableBoat;
         public virtual void Start()
         {
-            if (GameObject.FindGameObjectWithTag("Player") == this.gameObject)
-            {
-                SetActivestate = true;
-            }
             health = healthMax;
             moveSpeed = moveSpeedMax / 2;
             availableArt = new LinkedList<JokerArt>();
