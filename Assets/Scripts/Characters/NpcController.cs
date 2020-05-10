@@ -8,7 +8,6 @@ namespace Avocado
 {
     public class NpcController : MonoBehaviour
     {
-        protected string npcName;
         [SerializeField]
         public float movementSpeed;
         public Vector3 movementDirection = Vector3.right;
@@ -63,11 +62,6 @@ namespace Avocado
         {
             double newTimer = rng.NextDouble();
             npcDecisionTimer = Mathf.Clamp((float)newTimer, 0f, 6f);
-        }
-
-        private void OnDrawGizmos()
-        {
-            Handles.Label(transform.position, npcName);
         }
     }
 }

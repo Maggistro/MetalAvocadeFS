@@ -9,7 +9,6 @@ namespace Avocado
         private new void Awake()
         {
             base.Awake();
-            npcName = "Tourist";
             movementDirection = new Vector3(0f, 0f, 1f);
             RandomizeDecisionTimer();
         }
