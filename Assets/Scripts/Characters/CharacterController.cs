@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 namespace Avocado
 {
     public class CharacterController : NpcController
@@ -123,6 +125,11 @@ namespace Avocado
             if (Input.GetKeyDown(KeyCode.Space) && bossfightActive && IsGrounded())
             {
                 Jump();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
             }
 
             if (avocado != null)
