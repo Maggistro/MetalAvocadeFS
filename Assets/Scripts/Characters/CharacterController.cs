@@ -129,7 +129,7 @@ namespace Avocado
         }
         private void OnTriggerEnter(Collider collider)
         {
-            switch(collider.tag)
+            switch (collider.tag)
             {
                 case "WaterPickup":
                     Waterdroplet droplet = collider.GetComponent<Waterdroplet>();
@@ -156,6 +156,10 @@ namespace Avocado
             if (collider.tag == "JokerArt")
             {
                 availableArt.Remove(collider.GetComponent<JokerArt>());
+            }
+            if (collider.tag == "Boat")
+            {
+                availableBoat = null;
             }
         }
         private void Clean()

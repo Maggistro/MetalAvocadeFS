@@ -56,7 +56,7 @@ namespace Avocado
             }
 
             if (stickPlayer)
-                passenger.position = transform.position;
+                passenger.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
 
             if (Input.anyKey)
             {
@@ -73,6 +73,7 @@ namespace Avocado
             stickPlayer = true;
             passenger.GetComponent<CharacterController>().SetActivestate = false;
             SetActivestate = true;
+            passenger.GetComponent<Rigidbody>().isKinematic = true;
         }
         private void Exit(List<Vector3> exits)
         {
@@ -83,7 +84,8 @@ namespace Avocado
                 SetActivestate = false;
                 passenger.position = new Vector3(tempPos.x, 1, tempPos.z);
                 passenger.GetComponent<CharacterController>().SetActivestate = true;
-                // passenger = null;
+                passenger.GetComponent<Rigidbody>().isKinematic = false;
+                passenger = null;
             }
         }
     }
