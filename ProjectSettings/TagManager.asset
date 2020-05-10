@@ -8,7 +8,10 @@ TagManager:
   - WaterPickup
   - JokerArt
   - Boat
+  - Projectile
+  - Bosstrigger
   - BroomPickup
+  - Water
   layers:
   - Default
   - TransparentFX

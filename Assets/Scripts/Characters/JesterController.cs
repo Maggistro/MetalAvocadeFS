@@ -7,9 +7,9 @@ namespace Avocado
     public class JesterController : NpcController
     {
         [Header("Sound")]
-        [SerializeField] AudioSource audioSource; 
-        public AudioSource GetAudioSource { get { return audioSource; } } 
-        [SerializeField] AudioClip[] audioPaintbrush;  
+        [SerializeField] AudioSource audioSource;
+        public AudioSource GetAudioSource { get { return audioSource; } }
+        [SerializeField] AudioClip[] audioPaintbrush;
         [SerializeField] public AudioClip audioIntroCrash;
         [SerializeField] public AudioClip audioAvocadoCry;
         public GameObject graffiti;
@@ -61,7 +61,7 @@ namespace Avocado
             avocado.transform.position = Vector3.Lerp(avocado.transform.position, transform.position + (Vector3.up * .75f), .5f);
         }
 
-        public void Vandalize()
+        public void Vandalize(float time)
         {
             Debug.Log("Vandalizing stuff");
             SetSpriteStates(JesterState.VANDALIZING);
@@ -70,7 +70,27 @@ namespace Avocado
             Instantiate(graffiti, position, new Quaternion());
             audioSource.clip = audioPaintbrush[Random.Range(0,audioPaintbrush.Length)];
             audioSource.Play();
+            Invoke("ResetSprite", time);
+        }
 
+        private void ResetSprite()
+        {
+            SetSpriteStates(JesterState.NORMAL);
+        }
+
+        public void GiveUp(bool playerWon)
+        {
+            if (!playerWon) {
+                this.movementSpeed = 5;
+                this.movementDirection = Vector3.right;
+            } else {
+                spriteNormal.GetComponent<Billboard>().enabled = false;
+                avocado = null;
+                spriteNormal.transform.Rotate(Vector3.forward, 90);
+                spriteNormal.transform.position = spriteNormal.transform.position - new Vector3(0, 0.5f, 0);
+                // spriteNormal.transform.Translate(new Vector3(0, -0.5f, 0));
+                movementDirection = new Vector3(0,0,1); // look right
+            }
         }
 
         private void SetSpriteStates(JesterState newJesterState)

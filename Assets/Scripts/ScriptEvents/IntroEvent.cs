@@ -27,11 +27,11 @@ namespace Avocado
             return Vector3.Distance(jester.transform.position,  targets.First().target.position) < .2f;
         }
 
-        protected override void ExecuteEvent(ScriptEventType type)
+        protected override void ExecuteEvent(Step step)
         {
             switch(this.lastEvent) {
                 case ScriptEventType.INTRO:
-                    if (type == ScriptEventType.STEAL_AVOCADO) { // just entered, gonna steal that avocado
+                    if (step.type == ScriptEventType.STEAL_AVOCADO) { // just entered, gonna steal that avocado
                         jester.movementSpeed = 0;
                         character.GetAudioSource.loop = false;
                         character.GetAudioSource.Stop();
@@ -44,7 +44,7 @@ namespace Avocado
                     Debug.Log("Unsupported script event after intro");
                     break;
                 case ScriptEventType.STEAL_AVOCADO:
-                    if (type == ScriptEventType.LEAVE_HUT) { // got out with avocado, player can now move
+                    if (step.type == ScriptEventType.LEAVE_HUT) { // got out with avocado, player can now move
                         this.character.SetActivestate = true;
                         jester.GetAudioSource.clip = jester.audioIntroCrash;
                         jester.GetAudioSource.Play();
@@ -53,7 +53,7 @@ namespace Avocado
                     Debug.Log("Unsupported script event after steal avocado");
                     break;
                 case ScriptEventType.LEAVE_HUT:
-                    if (type == ScriptEventType.VANDALIZE) { // Move to the vandalize spot and clean up
+                    if (step.type == ScriptEventType.VANDALIZE) { // Move to the vandalize spot and clean up
                         jester.movementSpeed = 0;
                         Destroy(this);
                         return;
