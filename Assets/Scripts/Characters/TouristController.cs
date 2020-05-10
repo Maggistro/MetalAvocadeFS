@@ -37,7 +37,6 @@ namespace Avocado
                 {
                     sr.enabled = false;
                 }
-                Debug.LogError(randIndex);
                 sprites[randIndex].enabled = true;
             }
         }
