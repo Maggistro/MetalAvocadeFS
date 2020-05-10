@@ -26,7 +26,6 @@ namespace Avocado
         private new void Awake()
         {
             base.Awake();
-            npcName = "Narr";
             renderers = GetComponentsInChildren<Renderer>();
             FindSprites();
             SetSpriteStates(JesterState.NORMAL);

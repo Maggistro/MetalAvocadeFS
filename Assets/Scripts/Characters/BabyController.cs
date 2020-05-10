@@ -12,7 +12,6 @@ namespace Avocado
         private new void Awake()
         {
             base.Awake();
-            npcName = "Spreitz-Baby";
             RandomizeDecisionTimer();
         }
 
