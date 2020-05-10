@@ -15675,7 +15675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileX: 0.25
-  tileY: 5
+  tileY: 10
 --- !u!1 &2013290351
 GameObject:
   m_ObjectHideFlags: 0
