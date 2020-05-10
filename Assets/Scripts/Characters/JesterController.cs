@@ -6,6 +6,7 @@ namespace Avocado
 {
     public class JesterController : NpcController
     {
+        public GameObject graffiti;
         private GameObject avocado;
         private Renderer[] renderers;
         private Renderer spriteNormal;
@@ -58,6 +59,10 @@ namespace Avocado
         {
             Debug.Log("Vandalizing stuff");
             SetSpriteStates(JesterState.VANDALIZING);
+            Vector3 position = transform.position;
+            position.y = 0.1f;
+            Instantiate(graffiti, position, new Quaternion());
+
         }
 
         private void SetSpriteStates(JesterState newJesterState)
