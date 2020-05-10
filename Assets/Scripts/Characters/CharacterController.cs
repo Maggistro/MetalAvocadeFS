@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 namespace Avocado
 {
     public class CharacterController : NpcController
@@ -239,12 +240,13 @@ namespace Avocado
                     availableArt.Remove(art);
                     art.Value = -art.Value;
                     artRemoved++;
+                    scoreText.text = "Score: " + artRemoved.ToString();
                     audioSource.clip = audioWipeFloor;
                     audioSource.Play();
                 }
             }
         }
-
+        public Text scoreText;
         private bool WaterLevelCk(float value)
         {
             return (waterAmount - value) >= 0 ? true : false;
