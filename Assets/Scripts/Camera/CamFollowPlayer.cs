@@ -77,6 +77,8 @@ namespace Avocado
                 blend.color = new Color(blend.color.r, blend.color.g, blend.color.b, blend.color.a - Time.deltaTime * 1f);
                 yield return null;
             }
+            float newX = Mathf.Clamp(player.position.x, -64.5f, Mathf.Infinity);
+            transform.position = new Vector3(newX - offset, player.position.y + offset, transform.position.z);
         }
     }
 }

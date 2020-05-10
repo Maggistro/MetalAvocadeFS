@@ -173,22 +173,25 @@ namespace Avocado
         }
         private void OnTriggerEnter(Collider collider)
         {
-            if (collider.tag == "WaterPickup")
+            switch(collider.tag)
             {
-                Waterdroplet droplet = collider.GetComponent<Waterdroplet>();
-                AddWater = droplet.Value;
-                droplet.Value = -droplet.Value;
-            }
-            if (collider.tag == "JokerArt")
-            {
-                if (!availableArt.Contains(collider.GetComponent<JokerArt>()))
-                {
-                    availableArt.AddLast(collider.GetComponent<JokerArt>());
-                }
-            }
-            if (collider.tag == "Boat")
-            {
-                availableBoat = collider.GetComponent<Boat>();
+                case "WaterPickup":
+                    Waterdroplet droplet = collider.GetComponent<Waterdroplet>();
+                    AddWater = droplet.Value;
+                    droplet.Value = -droplet.Value;
+                    break;
+                case "JokerArt":
+                    if (!availableArt.Contains(collider.GetComponent<JokerArt>()))
+                    {
+                        availableArt.AddLast(collider.GetComponent<JokerArt>());
+                    }
+                    break;
+                case "Boat":
+                    availableBoat = collider.GetComponent<Boat>();
+                    break;
+                default:
+                    Debug.Log("unknown trigger enter for character controller");
+                    break;
             }
             if (collider.tag == "Bosstrigger")
             {
@@ -243,10 +246,12 @@ namespace Avocado
             return closestArt;
         }
 
-
         public void PickupBroom()
         {
             Debug.Log("Picking up broom");
+            transform.Find("SpriteWOBroom").gameObject.SetActive(false);
+            transform.Find("SpriteNormal").gameObject.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("BroomPickup"));
         }
     }
 }
