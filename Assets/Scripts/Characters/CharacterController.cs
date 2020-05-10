@@ -30,6 +30,11 @@ namespace Avocado
         [SerializeField] private Vector3 right;
         [SerializeField] private float jumpForce = 250f;
         [SerializeField] private bool grounded;
+        [Header("Sound")]
+        [SerializeField] AudioSource audioSource;
+        [SerializeField] AudioClip audioWipeFloor;
+        [SerializeField] AudioClip audioWaterRefill;
+
         public float distToGround = 1;
         private int layerMask = 1 << 8;//ground
         private Rigidbody rb;
@@ -135,6 +140,8 @@ namespace Avocado
                     Waterdroplet droplet = collider.GetComponent<Waterdroplet>();
                     AddWater = droplet.Value;
                     droplet.Value = -droplet.Value;
+                    audioSource.clip = audioWaterRefill;
+                    audioSource.Play();
                     break;
                 case "JokerArt":
                     if (!availableArt.Contains(collider.GetComponent<JokerArt>()))
@@ -165,6 +172,8 @@ namespace Avocado
             {
                 if (WaterLevelCk(art.Value))
                 {
+                    audioSource.clip = audioWipeFloor;
+                    audioSource.Play();
                     AddWater = -art.Value;
                     availableArt.Remove(art);
                     art.Value = -art.Value;
