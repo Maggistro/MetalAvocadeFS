@@ -48,7 +48,7 @@ namespace Avocado
 
         protected IEnumerator SelectNextTarget()
         {
-            ExecuteEvent(targets.First().type);
+            ExecuteEvent(targets.First());
             yield return new WaitForSeconds(targets.First().waitTime);
             lastEvent = targets.First().type;
             targets.Remove(targets.First());
@@ -57,6 +57,6 @@ namespace Avocado
 
         protected abstract void AnimateScriptEventTransition();
         protected abstract bool NextTargetCondition();
-        protected abstract void ExecuteEvent(ScriptEventType type);
+        protected abstract void ExecuteEvent(Step type);
     }
 }

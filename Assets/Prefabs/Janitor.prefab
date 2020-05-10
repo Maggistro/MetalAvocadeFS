@@ -50,7 +50,9 @@ MonoBehaviour:
   movementSpeed: 0
   movementDirection: {x: 1, y: 0, z: 0}
   npcDecisionTimer: 3
-  active: 1
+  projectilePrefab: {fileID: 6329955630030902669, guid: 73b1fff6251f4f641a5362d78f18ab18,
+    type: 3}
+  bossfightActive: 0
   healthMax: 100
   health: 0
   staminaMax: 10
@@ -60,13 +62,14 @@ MonoBehaviour:
   breakFactor: 10
   footCollider: {fileID: 7726738584504298282}
   moveSpeedMax: 16
-  moveSpeed: 0
+  moveSpeed: 8
   movementVector: {x: 0, y: 0}
   forward: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
   jumpForce: 250
   grounded: 0
   distToGround: 1
+  artRemoved: 0
 --- !u!54 &90542846
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100,7 +103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &31477781259428957
 Transform:
   m_ObjectHideFlags: 0
@@ -231,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762715109886224186}
   - component: {fileID: 8561281691711974444}
+  - component: {fileID: 1261690031}
   m_Layer: 0
   m_Name: SpriteWOBroom
   m_TagString: Untagged
@@ -302,3 +306,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1261690031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452579229567432508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0655e94a70edf5e4cb5ff85960f2a456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

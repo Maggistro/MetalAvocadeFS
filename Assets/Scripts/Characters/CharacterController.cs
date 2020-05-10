@@ -5,7 +5,10 @@ namespace Avocado
 {
     public class CharacterController : NpcController
     {
-        public bool active = true;
+        [Header("Bossfight ^°^ ")]
+        [SerializeField] GameObject projectilePrefab;
+        public bool bossfightActive = false;
+        protected bool active = true;
         public bool SetActivestate { set { active = value; } }
         [Header("Health")]
         [SerializeField] private float healthMax = 100;
@@ -35,6 +38,10 @@ namespace Avocado
         private Rigidbody rb;
         private LinkedList<JokerArt> availableArt;
         private Boat availableBoat;
+        private GameObject avocado;
+        public int artRemoved = 0;
+
+
         public virtual void Start()
         {
             health = healthMax;
@@ -74,9 +81,12 @@ namespace Avocado
             // Debug.DrawRay(transform.position, -Vector3.up * (distToGround + .1f), Color.red, 1f);
             if (Input.anyKey)
             {
-                Move();
+                if (!bossfightActive)
+                    Move();
+                else
+                    Move(bossfightActive);
             }
-            if (Input.GetKeyDown("space") && IsGrounded())
+            if (Input.GetKeyDown(KeyCode.Space) && !bossfightActive && IsGrounded())
                 Jump();
             if (Input.GetKeyDown(KeyCode.E) && IsGrounded())
             {
@@ -90,7 +100,42 @@ namespace Avocado
                     availableBoat.Use(this.transform);
                 }
             }
+            if (Input.GetKeyDown(KeyCode.X) && bossfightActive)
+            {
+                if (WaterLevelCk(3))
+                {
+                    AddWater = -3;
+                    Shoot();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.W) && bossfightActive && IsGrounded())
+            {
+                Jump();
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && bossfightActive && IsGrounded())
+            {
+                Jump();
+            }
 
+            if (avocado != null) {
+                MoveAvocado();
+            }
+        }
+
+        private void Shoot()
+        {
+            float dir = -1;
+            if (movementDirection.x == 1 || movementDirection.x == -1)
+                dir = movementDirection.x;
+            else if (movementDirection.x >= 0)
+            {
+                dir = 1;
+            }
+            GameObject gO = Instantiate(projectilePrefab);
+            gO.transform.position = new Vector3(transform.position.x + dir, transform.position.y, transform.position.z);
+            gO.GetComponent<Waterdroplet>().InitBossfight(dir);
+            gO.transform.Rotate(new Vector3(0, 0, dir * 90));
+            Destroy(gO, 3);
         }
         private void FixedUpdate()
         {
@@ -117,6 +162,14 @@ namespace Avocado
             transform.forward = heading; // Sets forward direction of our game object to whatever direction we're moving in
             transform.position += rightMovement; // move our transform's position right/left
             transform.position += upMovement; // Move our transform's position up/down
+        }
+        private void Move(bool boss)
+        {
+            Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
+            Vector3 heading = Vector3.Normalize(rightMovement);
+            movementDirection = heading; // update npc controller direction
+            transform.forward = heading; // Sets forward direction of our game object to whatever direction we're moving in
+            transform.position += rightMovement; // move our transform's position right/left
         }
 
         void Jump()
@@ -172,6 +225,7 @@ namespace Avocado
                     AddWater = -art.Value;
                     availableArt.Remove(art);
                     art.Value = -art.Value;
+                    artRemoved++;
                 }
             }
         }
@@ -203,6 +257,16 @@ namespace Avocado
             transform.Find("SpriteWOBroom").gameObject.SetActive(false);
             transform.Find("SpriteNormal").gameObject.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("BroomPickup"));
+        }
+
+        public void PickupAvocado()
+        {
+            avocado = GameObject.FindGameObjectsWithTag("Avocado")[0];
+        }
+
+        void MoveAvocado()
+        {
+            avocado.transform.position = Vector3.Lerp(avocado.transform.position, transform.position + (Vector3.up * 1.5f), .5f);
         }
     }
 }
