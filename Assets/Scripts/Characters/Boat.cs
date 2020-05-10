@@ -13,7 +13,6 @@ namespace Avocado
         public override void Start()
         {
             base.Start();
-            SetActivestate = false;
             distToGround *= 10;
         }
 
@@ -55,17 +54,13 @@ namespace Avocado
                 exitPoints.Add(down);
             }
 
+            if (stickPlayer)
+                passenger.position = transform.position;
+
             if (Input.anyKey)
             {
                 Move();
             }
-
-            if (stickPlayer)
-            {
-                passenger.transform.position = Vector3.Lerp(transform.position + Vector3.up, passenger.transform.position, Time.deltaTime);
-                passenger.forward = transform.forward;
-            }
-
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 Exit(exitPoints);
@@ -76,7 +71,6 @@ namespace Avocado
             this.passenger = passenger;
             stickPlayer = true;
             passenger.GetComponent<CharacterController>().SetActivestate = false;
-            passenger.GetComponentInChildren<Rigidbody>().isKinematic = true;
             SetActivestate = true;
         }
         private void Exit(List<Vector3> exits)
@@ -88,7 +82,6 @@ namespace Avocado
                 SetActivestate = false;
                 passenger.position = new Vector3(tempPos.x, 1, tempPos.z);
                 passenger.GetComponent<CharacterController>().SetActivestate = true;
-                passenger.GetComponentInChildren<Rigidbody>().isKinematic = false;
                 // passenger = null;
             }
         }
