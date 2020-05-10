@@ -17,7 +17,7 @@ namespace Avocado
         void Update()
         {
             mat.mainTextureScale = new Vector2((mesh.bounds.size.x *
-    transform.localScale.x)/100*tileX, (mesh.bounds.size.y * transform.localScale.y)/100*tileY);
+    transform.localScale.x)*tileX, (mesh.bounds.size.y * transform.localScale.y)*tileY);
         }
     }
 }

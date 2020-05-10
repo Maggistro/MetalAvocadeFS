@@ -224,12 +224,12 @@ GameObject:
   - component: {fileID: 96738514}
   - component: {fileID: 96738515}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: HideOutside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &96738514
 Transform:
   m_ObjectHideFlags: 0
@@ -1927,7 +1927,7 @@ PrefabInstance:
     - target: {fileID: 6983974570635654183, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -64.5
+      value: -44.72
       objectReference: {fileID: 0}
     - target: {fileID: 6983974570635654183, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
@@ -2940,6 +2940,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1385271281}
     m_Modifications:
+    - target: {fileID: 4945181780081023633, guid: e9a4ec50170a89b4b98959791acc6344,
+        type: 3}
+      propertyPath: tileX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4945181780081023633, guid: e9a4ec50170a89b4b98959791acc6344,
+        type: 3}
+      propertyPath: tileY
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566297139608227497, guid: e9a4ec50170a89b4b98959791acc6344,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566297139608227497, guid: e9a4ec50170a89b4b98959791acc6344,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 19e47edaf2dfa4a4e80d54a3bf936e54, type: 2}
     - target: {fileID: 8566297139608227510, guid: e9a4ec50170a89b4b98959791acc6344,
         type: 3}
       propertyPath: m_Name
