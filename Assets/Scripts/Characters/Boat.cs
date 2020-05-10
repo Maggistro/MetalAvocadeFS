@@ -14,6 +14,7 @@ namespace Avocado
         {
             base.Start();
             distToGround *= 10;
+            SetActivestate = false;
         }
 
         public override void Update()

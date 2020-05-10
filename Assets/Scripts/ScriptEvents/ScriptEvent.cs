@@ -21,16 +21,10 @@ namespace Avocado
 
         protected abstract ScriptEventType lastEvent  { get; set; }
 
-        protected JesterController jester;
-        protected CharacterController character;
+        public JesterController jester;
+        public CharacterController character;
 
         private bool switchingTarget = false;
-
-        void Awake()
-        {
-            jester = FindObjectOfType<JesterController>();
-            character = FindObjectOfType<CharacterController>();
-        }
 
         void Update()
         {

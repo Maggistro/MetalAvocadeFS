@@ -14,7 +14,7 @@ namespace Avocado
         }
         private void Update()
         {
-            float newX = Mathf.Clamp(player.position.x, -68, Mathf.Infinity);
+            float newX = Mathf.Clamp(player.position.x, -64.5f, Mathf.Infinity);
             transform.position = new Vector3(newX - offset, player.position.y + offset, transform.position.z);
         }
     }
