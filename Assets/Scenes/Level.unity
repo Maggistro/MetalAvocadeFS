@@ -1077,6 +1077,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Avocado
       objectReference: {fileID: 0}
+    - target: {fileID: 4104579821873052137, guid: 3781ff31d59a49a4b8f124d72f7d36ef,
+        type: 3}
+      propertyPath: m_TagString
+      value: Avocado
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3781ff31d59a49a4b8f124d72f7d36ef, type: 3}
 --- !u!1001 &788135531
