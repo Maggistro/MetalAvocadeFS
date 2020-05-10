@@ -911,7 +911,7 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.972
-    m_Bias: 0.05
+    m_Bias: 0.06
     m_NormalBias: 0.4
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
@@ -996,7 +996,7 @@ PrefabInstance:
     - target: {fileID: 4104579821873052136, guid: 3781ff31d59a49a4b8f124d72f7d36ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.24
+      value: -0.68
       objectReference: {fileID: 0}
     - target: {fileID: 4104579821873052136, guid: 3781ff31d59a49a4b8f124d72f7d36ef,
         type: 3}
@@ -1041,12 +1041,12 @@ PrefabInstance:
     - target: {fileID: 4104579821873052136, guid: 3781ff31d59a49a4b8f124d72f7d36ef,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 4104579821873052136, guid: 3781ff31d59a49a4b8f124d72f7d36ef,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 4104579821873052137, guid: 3781ff31d59a49a4b8f124d72f7d36ef,
         type: 3}
@@ -1662,7 +1662,7 @@ PrefabInstance:
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
       propertyPath: near clip plane
-      value: -5000
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
@@ -1672,7 +1672,7 @@ PrefabInstance:
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
       propertyPath: far clip plane
-      value: 5000.01
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6983974570635654176, guid: fbeb9d08af564d34abe0035fd01cadb7,
         type: 3}
