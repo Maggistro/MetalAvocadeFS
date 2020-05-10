@@ -5,6 +5,7 @@ namespace Avocado
 {
     public class CharacterController : NpcController
     {
+        public Transform ears;
         [Header("Bossfight ^°^ ")]
         [SerializeField] GameObject projectilePrefab;
         public bool bossfightActive = false;
@@ -61,6 +62,7 @@ namespace Avocado
         }
         public new virtual void Update()
         {
+            ears.position = transform.position;
             base.Update();
             if (!active)
                 return;
@@ -123,7 +125,8 @@ namespace Avocado
                 Jump();
             }
 
-            if (avocado != null) {
+            if (avocado != null)
+            {
                 MoveAvocado();
             }
         }

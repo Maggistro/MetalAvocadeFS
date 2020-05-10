@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8229086559297816197}
   - component: {fileID: 90542846}
   - component: {fileID: 3668050748182815043}
-  - component: {fileID: -2145400197488937802}
   m_Layer: 0
   m_Name: Janitor
   m_TagString: Player
@@ -52,6 +51,7 @@ MonoBehaviour:
   movementSpeed: 0
   movementDirection: {x: 1, y: 0, z: 0}
   npcDecisionTimer: 3
+  ears: {fileID: 0}
   projectilePrefab: {fileID: 6329955630030902669, guid: 73b1fff6251f4f641a5362d78f18ab18,
     type: 3}
   bossfightActive: 0
@@ -187,14 +187,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &-2145400197488937802
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013424941982535849}
-  m_Enabled: 1
 --- !u!1 &3582738966927461950
 GameObject:
   m_ObjectHideFlags: 0
