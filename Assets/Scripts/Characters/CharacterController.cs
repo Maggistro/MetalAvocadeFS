@@ -38,6 +38,7 @@ namespace Avocado
         private Rigidbody rb;
         private LinkedList<JokerArt> availableArt;
         private Boat availableBoat;
+        private GameObject avocado;
         public int artRemoved = 0;
 
 
@@ -115,7 +116,12 @@ namespace Avocado
             {
                 Jump();
             }
+
+            if (avocado != null) {
+                MoveAvocado();
+            }
         }
+
         private void Shoot()
         {
             float dir = -1;
@@ -251,6 +257,16 @@ namespace Avocado
             transform.Find("SpriteWOBroom").gameObject.SetActive(false);
             transform.Find("SpriteNormal").gameObject.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("BroomPickup"));
+        }
+
+        public void PickupAvocado()
+        {
+            avocado = GameObject.FindGameObjectsWithTag("Avocado")[0];
+        }
+
+        void MoveAvocado()
+        {
+            avocado.transform.position = Vector3.Lerp(avocado.transform.position, transform.position + (Vector3.up * 1.5f), .5f);
         }
     }
 }

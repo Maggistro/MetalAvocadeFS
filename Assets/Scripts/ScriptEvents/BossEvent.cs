@@ -63,7 +63,9 @@ namespace Avocado
                         character.bossfightActive = true;
                         jester.movementSpeed = 0;
                         StartCoroutine(Camera.main.GetComponent<CamFollowPlayer>().CamTraversion());
-                        jester.GiveUp(character.artRemoved - artRemovedStart >= 8);
+                        bool playerWon = character.artRemoved - artRemovedStart >= 8;
+                        jester.GiveUp(playerWon);
+                        character.PickupAvocado();
                         return;
                     }
                     Debug.Log("Unsupported script event after leave hut");

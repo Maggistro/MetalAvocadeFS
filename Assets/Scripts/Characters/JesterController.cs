@@ -77,6 +77,7 @@ namespace Avocado
                 this.movementDirection = Vector3.right;
             } else {
                 spriteNormal.GetComponent<Billboard>().enabled = false;
+                avocado = null;
                 spriteNormal.transform.Rotate(Vector3.forward, 90);
                 spriteNormal.transform.position = spriteNormal.transform.position - new Vector3(0, 0.5f, 0);
                 // spriteNormal.transform.Translate(new Vector3(0, -0.5f, 0));
