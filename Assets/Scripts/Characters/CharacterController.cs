@@ -190,6 +190,11 @@ namespace Avocado
             {
                 availableBoat = collider.GetComponent<Boat>();
             }
+            if (collider.tag == "Bosstrigger")
+            {
+                collider.GetComponent<BossEvent>().Trigger(ScriptEventType.BOSS);
+                collider.enabled = false;
+            }
         }
 
         private void OnTriggerExit(Collider collider)

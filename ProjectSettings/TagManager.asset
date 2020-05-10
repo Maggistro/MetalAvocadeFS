@@ -9,6 +9,7 @@ TagManager:
   - JokerArt
   - Boat
   - Projectile
+  - Bosstrigger
   layers:
   - Default
   - TransparentFX

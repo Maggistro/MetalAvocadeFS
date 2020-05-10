@@ -7,5 +7,6 @@ namespace Avocado
         LEAVE_HUT,
         VANDALIZE,
         PICKUP_BROOM,
+        BOSS,
     }
 }
