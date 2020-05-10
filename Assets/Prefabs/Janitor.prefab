@@ -47,11 +47,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b907a068cf9334e8eda40b528862b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 0
+  movementDirection: {x: 1, y: 0, z: 0}
+  npcDecisionTimer: 3
+  projectilePrefab: {fileID: 6329955630030902669, guid: 73b1fff6251f4f641a5362d78f18ab18,
+    type: 3}
+  healthMax: 100
+  health: 0
   staminaMax: 10
-  footCollider: {fileID: 7726738584504298282}
+  stamina: 10
   waterAmountMax: 100
   waterAmount: 0
+  breakFactor: 10
+  footCollider: {fileID: 7726738584504298282}
   moveSpeedMax: 16
+  moveSpeed: 0
+  movementVector: {x: 0, y: 0}
+  forward: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0, z: 0}
   jumpForce: 250
   grounded: 0
   distToGround: 1
