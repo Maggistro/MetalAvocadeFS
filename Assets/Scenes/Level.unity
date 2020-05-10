@@ -1337,6 +1337,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7614170877428524945, guid: 8cbba03e1327de94b8a55c08de8de374,
+        type: 3}
+      propertyPath: graffiti
+      value: 
+      objectReference: {fileID: 7254859300673840587, guid: 3abbea9967c2f0341a18a82a0ab53c5e,
+        type: 3}
     - target: {fileID: -2076612920428164361, guid: 8cbba03e1327de94b8a55c08de8de374,
         type: 3}
       propertyPath: m_Name
