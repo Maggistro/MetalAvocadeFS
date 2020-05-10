@@ -9616,6 +9616,7 @@ GameObject:
   - component: {fileID: 1456223489}
   - component: {fileID: 1456223488}
   - component: {fileID: 1456223487}
+  - component: {fileID: 1456223491}
   m_Layer: 8
   m_Name: Hallway
   m_TagString: Untagged
@@ -9654,7 +9655,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b939c57a70815934694acaa03fb90eff, type: 2}
+  - {fileID: 2100000, guid: a55db0701eae0aa4eb0cb99e52fcf202, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9697,6 +9698,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1456223491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456223486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb80fc49fc68764a8f4297eee8dc389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileX: 0.1
+  tileY: 2
 --- !u!4 &1480862867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4181501772899960119, guid: 13a3b838b097a9848afb57555cf145c0,
@@ -13753,6 +13768,7 @@ GameObject:
   - component: {fileID: 2001757499}
   - component: {fileID: 2001757498}
   - component: {fileID: 2001757497}
+  - component: {fileID: 2001757500}
   m_Layer: 8
   m_Name: Hallway (1)
   m_TagString: Untagged
@@ -13805,7 +13821,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b939c57a70815934694acaa03fb90eff, type: 2}
+  - {fileID: 2100000, guid: a55db0701eae0aa4eb0cb99e52fcf202, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13834,6 +13850,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001757495}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2001757500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001757495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb80fc49fc68764a8f4297eee8dc389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileX: 0.25
+  tileY: 5
 --- !u!1 &2013290351
 GameObject:
   m_ObjectHideFlags: 0
