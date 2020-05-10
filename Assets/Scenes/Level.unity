@@ -16171,10 +16171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   babyTemplate: {fileID: 3883760947419749645, guid: cffa75d0aa065db4dac62783dcab070c,
     type: 3}
-  numberOfBabies: 1200
+  numberOfBabies: 500
   touristTemplate: {fileID: 5755326180551461786, guid: fdf88bcb3acb79140a03def9e0de31a9,
     type: 3}
-  numberOfTourists: 1500
+  numberOfTourists: 1000
 --- !u!4 &1701091853
 Transform:
   m_ObjectHideFlags: 0
