@@ -57,6 +57,7 @@ namespace Avocado
                         jester.transform.position = nextJesterPosition.position;
                         character.SetActivestate = true;
                         character.movementSpeed = 0;
+                        GameObject.FindGameObjectWithTag("Backgroundmusic").GetComponent<AudioSource>().Play();
                         Destroy(this);
                         return;
                     };
