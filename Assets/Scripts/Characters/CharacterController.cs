@@ -129,6 +129,8 @@ namespace Avocado
             {
                 MoveAvocado();
             }
+            if (IsGrounded())
+                rb.velocity = Vector3.zero;
         }
 
         private void Shoot()
