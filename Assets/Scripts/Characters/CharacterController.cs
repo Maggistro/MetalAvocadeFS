@@ -128,9 +128,6 @@ namespace Avocado
                 case "Boat":
                     availableBoat = collider.GetComponent<Boat>();
                     break;
-                case "BroomPickup":
-                    Destroy(collider.gameObject);
-                    break;
                 default:
                     Debug.Log("unknown trigger enter for character controller");
                     break;
@@ -184,6 +181,7 @@ namespace Avocado
             Debug.Log("Picking up broom");
             transform.Find("SpriteWOBroom").gameObject.SetActive(false);
             transform.Find("SpriteNormal").gameObject.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("BroomPickup"));
         }
     }
 }
