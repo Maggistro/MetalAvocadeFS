@@ -20,7 +20,7 @@ namespace Avocado
             npcName = "Narr";
             renderers = GetComponentsInChildren<Renderer>();
             FindSprites();
-            SetSpriteStates(JesterState.VANDALIZING);
+            SetSpriteStates(JesterState.NORMAL);
         }
 
         private void FindSprites()
