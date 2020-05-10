@@ -1884,6 +1884,7 @@ MonoBehaviour:
   stamina: 10
   waterAmountMax: 0
   waterAmount: 0
+  breakFactor: 10
   footCollider: {fileID: 0}
   moveSpeedMax: 16
   moveSpeed: 0
