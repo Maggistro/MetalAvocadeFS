@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8830129820751185556}
   - component: {fileID: 4488531839262108903}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Broom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833572696971445750}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.77, y: 0.75, z: 0.447}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.000122998, y: -0.08173313, z: 0.11678026, w: 0.98978895}
+  m_LocalPosition: {x: -0.57, y: 0.77, z: 0.034}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4390897979025791210}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.08, y: -9.315001, z: 13.370001}
 --- !u!212 &4488531839262108903
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 4390897979323011423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4390897979025791210}
   m_RootOrder: 0
