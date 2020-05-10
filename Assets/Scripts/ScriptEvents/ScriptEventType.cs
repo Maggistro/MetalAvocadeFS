@@ -8,5 +8,6 @@ namespace Avocado
         VANDALIZE,
         PICKUP_BROOM,
         BOSS,
+        BOSS_WON,
     }
 }

@@ -37,19 +37,19 @@ namespace Avocado
             }
         }
 
-        protected override void ExecuteEvent(ScriptEventType type)
+        protected override void ExecuteEvent(Step step)
         {
             switch(this.lastEvent) {
                 case ScriptEventType.LEAVE_HUT:
-                    if (type == ScriptEventType.VANDALIZE) {
-                        jester.Vandalize();
+                    if (step.type == ScriptEventType.VANDALIZE) {
+                        jester.Vandalize(step.waitTime);
                         jester.movementDirection = Vector3.right;
                         return;
                     }
                     Debug.Log("Unsupported script event after leave hut");
                     break;
                 case ScriptEventType.VANDALIZE:
-                    if (type == ScriptEventType.PICKUP_BROOM) {
+                    if (step.type == ScriptEventType.PICKUP_BROOM) {
                         character.PickupBroom();
                         jester.movementSpeed = 0;
                         //TODO: Set jester to next encounter position

@@ -5,42 +5,68 @@ namespace Avocado
 {
     class BossEvent : ScriptEvent
     {
+        [SerializeField]
+        public Transform jesterStartPosition;
         protected override ScriptEventType lastEvent { get; set; } = ScriptEventType.BOSS;
         private float storedMovementSpeed;
+        private bool isActive = false;
+        private int artRemovedStart = 0;
+
         void Start()
         {
-            storedMovementSpeed = jester.movementSpeed;
+            storedMovementSpeed = 7.5f;
         }
 
         protected override void AnimateScriptEventTransition()
         {
-            Transform target = targets.First().target;
-            jester.movementDirection = target.position - jester.transform.position;
-            // jester.movementSpeed = storedMovementSpeed;
+            if (isActive)
+            {
+                Transform target = targets.First().target;
+                jester.movementDirection = target.position - jester.transform.position;
+                jester.movementSpeed = storedMovementSpeed;
+            }
         }
 
         protected override bool NextTargetCondition()
         {
-            // return Vector3.Distance(jester.transform.position, targets.First().target.position) < .2f;
-            return false;
+            return isActive && (Vector3.Distance(jester.transform.position, targets.First().target.position) < .2f);
         }
-        public void Trigger(ScriptEventType type)
+
+        void OnTriggerEnter(Collider other)
         {
-            ExecuteEvent(type);
+            if (other.GetComponentInParent<CharacterController>() != null && other.GetComponent<Boat>() == null) {
+                isActive = true;
+                artRemovedStart = character.artRemoved;
+                jester.movementSpeed = 0;
+                jester.transform.position = jesterStartPosition.position;
+            }
         }
-        protected override void ExecuteEvent(ScriptEventType type)
+
+        protected override void ExecuteEvent(Step step)
         {
             switch (this.lastEvent)
             {
                 case ScriptEventType.BOSS:
-                    if (type == ScriptEventType.BOSS)
-                    { // just entered, gonna steal that avocado
-                        character.bossfightActive = true;
-                        character.transform.position = new Vector3(transform.position.x, 1, 0);
-                        StartCoroutine(Camera.main.GetComponent<CamFollowPlayer>().CamTraversion());
+                    if (step.type == ScriptEventType.VANDALIZE) {
+                        jester.Vandalize(step.waitTime);
                         return;
                     }
-                    Debug.Log("Unsupported script event after boss");
+                    Debug.Log("Unsupported script event after leave hut");
+                    break;
+                case ScriptEventType.VANDALIZE:
+                    if (step.type == ScriptEventType.VANDALIZE) {
+                        jester.Vandalize(step.waitTime);
+                        return;
+                    }
+                    if (step.type == ScriptEventType.BOSS_WON){
+                        isActive = false;
+                        character.bossfightActive = true;
+                        jester.movementSpeed = 0;
+                        StartCoroutine(Camera.main.GetComponent<CamFollowPlayer>().CamTraversion());
+                        jester.GiveUp(character.artRemoved - artRemovedStart >= 8);
+                        return;
+                    }
+                    Debug.Log("Unsupported script event after leave hut");
                     break;
                 default:
                     Debug.Log("Unsupported script event");

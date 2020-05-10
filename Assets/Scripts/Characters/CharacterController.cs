@@ -38,6 +38,9 @@ namespace Avocado
         private Rigidbody rb;
         private LinkedList<JokerArt> availableArt;
         private Boat availableBoat;
+        public int artRemoved = 0;
+
+
         public virtual void Start()
         {
             health = healthMax;
@@ -193,11 +196,6 @@ namespace Avocado
                     Debug.Log("unknown trigger enter for character controller");
                     break;
             }
-            if (collider.tag == "Bosstrigger")
-            {
-                collider.GetComponent<BossEvent>().Trigger(ScriptEventType.BOSS);
-                collider.enabled = false;
-            }
         }
 
         private void OnTriggerExit(Collider collider)
@@ -221,6 +219,7 @@ namespace Avocado
                     AddWater = -art.Value;
                     availableArt.Remove(art);
                     art.Value = -art.Value;
+                    artRemoved++;
                 }
             }
         }
