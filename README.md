@@ -1,5 +1,7 @@
 # Savocado
 
+![Starting Room](./Screenshot.png)
+
 Hausmeistersimulation.
 
 ## Spielziel
