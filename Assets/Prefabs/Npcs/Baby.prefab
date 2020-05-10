@@ -116,6 +116,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7083816805015198665, guid: a91ad66552dceb2489edc22135c52dd6,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7083816805015198665, guid: a91ad66552dceb2489edc22135c52dd6,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2138068075681607221, guid: a91ad66552dceb2489edc22135c52dd6,
         type: 3}
       propertyPath: m_Height
