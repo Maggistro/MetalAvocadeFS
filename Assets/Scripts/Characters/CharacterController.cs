@@ -197,6 +197,8 @@ namespace Avocado
                     Waterdroplet droplet = collider.GetComponent<Waterdroplet>();
                     AddWater = droplet.Value;
                     droplet.Value = -droplet.Value;
+                    audioSource.clip = audioWaterRefill;
+                    audioSource.Play();
                     break;
                 case "JokerArt":
                     if (!availableArt.Contains(collider.GetComponent<JokerArt>()))
@@ -235,6 +237,8 @@ namespace Avocado
                     availableArt.Remove(art);
                     art.Value = -art.Value;
                     artRemoved++;
+                    audioSource.clip = audioWipeFloor;
+                    audioSource.Play();
                 }
             }
         }
