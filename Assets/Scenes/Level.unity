@@ -6423,6 +6423,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 792285022044404444, guid: 3781ff31d59a49a4b8f124d72f7d36ef,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4104579821873052135, guid: 3781ff31d59a49a4b8f124d72f7d36ef,
         type: 3}
       propertyPath: m_Color.r
@@ -13576,7 +13581,6 @@ GameObject:
   - component: {fileID: 1456223489}
   - component: {fileID: 1456223488}
   - component: {fileID: 1456223487}
-  - component: {fileID: 1456223491}
   m_Layer: 8
   m_Name: Hallway
   m_TagString: Untagged
@@ -16132,10 +16136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   babyTemplate: {fileID: 3883760947419749645, guid: cffa75d0aa065db4dac62783dcab070c,
     type: 3}
-  numberOfBabies: 1200
+  numberOfBabies: 600
   touristTemplate: {fileID: 5755326180551461786, guid: fdf88bcb3acb79140a03def9e0de31a9,
     type: 3}
-  numberOfTourists: 1500
+  numberOfTourists: 700
 --- !u!4 &1701091853
 Transform:
   m_ObjectHideFlags: 0
