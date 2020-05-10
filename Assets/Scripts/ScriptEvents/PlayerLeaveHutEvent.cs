@@ -5,6 +5,7 @@ namespace Avocado
 {
     class PlayerLeaveHutEvent : ScriptEvent
     {
+        public Transform nextJesterPosition;
         protected override ScriptEventType lastEvent { get; set; } = ScriptEventType.LEAVE_HUT;
         private bool isActive = false;
         private float storedMovementSpeed;
@@ -53,7 +54,7 @@ namespace Avocado
                         character.PickupBroom();
                         jester.movementSpeed = 0;
                         //TODO: Set jester to next encounter position
-                        jester.transform.position = Vector3.zero;
+                        jester.transform.position = nextJesterPosition.position;
                         character.SetActivestate = true;
                         character.movementSpeed = 0;
                         Destroy(this);
