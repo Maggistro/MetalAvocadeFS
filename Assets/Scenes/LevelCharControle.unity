@@ -1877,6 +1877,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8afb4de7009ab4fb6fa1d001d16083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 0
+  movementDirection: {x: 1, y: 0, z: 0}
+  npcDecisionTimer: 3
   active: 0
   healthMax: 100
   health: 0
@@ -1884,6 +1887,7 @@ MonoBehaviour:
   stamina: 10
   waterAmountMax: 0
   waterAmount: 0
+  breakFactor: 10
   footCollider: {fileID: 0}
   moveSpeedMax: 16
   moveSpeed: 0

@@ -21,6 +21,7 @@ namespace Avocado
         public float WaterLevel { get { return waterAmount / waterAmountMax; } }
         public float AddWater { set { waterAmount += value; } }
         [Header("Movement")]
+        [SerializeField] private float breakFactor = 10f;
         [SerializeField] private Collider footCollider;
         [SerializeField] private float moveSpeedMax = 16f;
         [SerializeField] private float moveSpeed;
@@ -94,6 +95,22 @@ namespace Avocado
                 }
             }
 
+        }
+        private void FixedUpdate()
+        {
+            // rb.velocity.Set(0, 0, 0);
+            // if (!active)
+            //     return;
+            // float horizontal = Input.GetAxis("Horizontal") * Time.fixedDeltaTime * moveSpeed;
+            // float vertical = Input.GetAxis("Vertical") * Time.fixedDeltaTime * moveSpeed;
+            // if (IsGrounded() && (horizontal != 0 || vertical != 0))
+            // {
+            //     rb.AddForce(new Vector3(horizontal, 0, vertical));
+            // }
+            // else
+            // {
+            //     // rb.AddForce(-rb.velocity.x * Time.fixedDeltaTime * moveSpeed * breakFactor, 0, -rb.velocity.z * Time.fixedDeltaTime * moveSpeed * breakFactor);
+            // }
         }
         public new virtual void Move()
         {
